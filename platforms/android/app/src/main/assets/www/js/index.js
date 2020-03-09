@@ -10,6 +10,7 @@ document.addEventListener('deviceready', function() {
 });
 
 var uniqueDevices = [];
+var Devices = [];
 var foundDevices = [];
 var scanning = "false";
 
@@ -18,7 +19,7 @@ function startScan(){
     let params;
     console.log("Starting Scan");
     bluetoothle.startScan(startScanSuccess, startScanError, params);
-    foundDevices = [];
+    Devices = [];
 }
 
 function startScanSuccess(result) {
@@ -48,20 +49,42 @@ function stopScan(){
     }
     else if(scanning == "false"){
         uniqueDevices = new Set(foundDevices);
-        console.log("Devices")
-        console.log(uniqueDevices);
+        Devices = Array.from(uniqueDevices);
+        console.log(Devices);
+        console.log(Devices[5]);
         scanning="stopped";
+        connect();
     }
-    // else if(scanning == "stopped"){
-    //
-    //     let params = {
-    //         "address":"",
-    //         "clearCache": true
-    //     };
-    //
-    //     bluetoothle.discover(discoverSuccess, discoverError, params);
-    // }
+}
 
+function connect(){
+
+    let params = {
+        "address":Devices[0]
+    };
+
+    bluetoothle.connect(connectSuccess, connectError, params);
+
+    setTimeout(disconnect, 2000);
+}
+
+function disconnect() {
+
+    let params = {
+        "address": Devices[0]
+    }
+
+    bluetoothle.disconnect(disconnectSuccess, disconnectError, params);
+}
+
+function disconnectSuccess(result) {
+
+    console.log(result);
+}
+
+function disconnectError(result){
+
+    console.log(result);
 }
 
 function stopScanSuccess(){
@@ -79,5 +102,13 @@ function discoverSuccess(result){
 }
 
 function discoverError(result){
+    console.log(result);
+}
+
+function connectSuccess(result){
+    console.log(result);
+}
+
+function connectError(result) {
     console.log(result);
 }
