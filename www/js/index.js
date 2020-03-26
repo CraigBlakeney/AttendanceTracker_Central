@@ -50,8 +50,8 @@ function stopScan(){
     else if(scanning == "false"){
         uniqueDevices = new Set(foundDevices);
         Devices = Array.from(uniqueDevices);
-        console.log(Devices);
-        console.log(Devices[5]);
+        console.log(uniqueDevices);
+        console.log(Devices.length);
         scanning="stopped";
         connect();
     }
@@ -62,22 +62,20 @@ function connect(){
     let params = {
         "address":Devices[0]
     };
-
+    console.log("connecting");
     bluetoothle.connect(connectSuccess, connectError, params);
-
-    setTimeout(disconnect, 2000);
 }
 
 function disconnect() {
 
     let params = {
         "address": Devices[0]
-    }
-
+    };
+    console.log("disconnecting");
     bluetoothle.disconnect(disconnectSuccess, disconnectError, params);
 }
 
-function disconnectSuccess(result) {
+function disconnectSuccess(result){
 
     console.log(result);
 }
@@ -99,6 +97,7 @@ function stopScanError(){
 
 function discoverSuccess(result){
     console.log(result);
+    disconnect();
 }
 
 function discoverError(result){
@@ -106,9 +105,45 @@ function discoverError(result){
 }
 
 function connectSuccess(result){
+    console.log("connect function");
     console.log(result);
+    if(result.status === "connected")
+    {
+        getDeviceServices(result.address);
+    }
+    //disconnect();
 }
 
-function connectError(result) {
+function getDeviceServices(){
+
+    let params = {
+        "address": Devices[0],
+        "clearcache": true
+    };
+
+    bluetoothle.discover(discoverSuccess, discoverError, params);
+
+    //disconnect();
+}
+
+function connectError(result){
+
+    console.log(result);
+    let params = {
+        "address": Devices[0]
+    };
+
+    bluetoothle.reconnect(reconnectSuccess, reconnectError, params)
+}
+
+function reconnectSuccess(result){
+    console.log(result);
+    if(result.status === "connected")
+    {
+        getDeviceServices(result.address);
+    }
+}
+
+function reconnectError(result){
     console.log(result);
 }
