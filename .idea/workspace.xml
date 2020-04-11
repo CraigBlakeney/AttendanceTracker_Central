@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0358a7fc-64c6-4411-b4c7-8fc3ee472b73" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/js/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/js/index.js" afterDir="false" />
@@ -23,7 +22,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.phonegap.settings.workdir" value="$PROJECT_DIR$" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FYP_Peripheral" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -87,7 +86,9 @@
       <workItem from="1583779385043" duration="9068000" />
       <workItem from="1583849455439" duration="3435000" />
       <workItem from="1583853053847" duration="24644000" />
-      <workItem from="1584896942405" duration="6700000" />
+      <workItem from="1584896942405" duration="17597000" />
+      <workItem from="1586383516953" duration="3111000" />
+      <workItem from="1586583908652" duration="4460000" />
     </task>
     <servers />
   </component>

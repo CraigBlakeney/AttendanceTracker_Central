@@ -59,11 +59,15 @@ function stopScan(){
 
 function connect(){
 
-    let params = {
-        "address":Devices[0]
-    };
-    console.log("connecting");
-    bluetoothle.connect(connectSuccess, connectError, params);
+        let params = {
+            "address":Devices[0]
+        };
+        console.log("connecting");
+
+        //for(i=0;i<Devices.length;i++) {
+            bluetoothle.connect(connectSuccess, connectError, params);
+        //}
+
 }
 
 function disconnect() {
@@ -75,9 +79,10 @@ function disconnect() {
     bluetoothle.disconnect(disconnectSuccess, disconnectError, params);
 }
 
-function disconnectSuccess(result) {
+function disconnectSuccess(result){
 
     console.log(result);
+    connect();
 }
 
 function disconnectError(result){
@@ -111,19 +116,16 @@ function connectSuccess(result){
     {
         getDeviceServices(result.address);
     }
-    //disconnect();
 }
 
 function getDeviceServices(){
 
     let params = {
-        "address": Devices[0],
-        "clearcache": true
+        "address": Devices[0]
     };
 
     bluetoothle.discover(discoverSuccess, discoverError, params);
 
-    //disconnect();
 }
 
 function connectError(result){
@@ -145,5 +147,7 @@ function reconnectSuccess(result){
 }
 
 function reconnectError(result){
+
+    //disconnect();
     console.log(result);
 }
